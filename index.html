@@ -249,7 +249,7 @@ summary{cursor:pointer;font-weight:500}details p{color:var(--mut);margin:8px 0 0
 <div class="cta"><button class="btn" id="lbOrder" type="button">Искам подобно</button><button class="btn ghost" id="lbClose" type="button">Затвори</button></div>
 </div></dialog>
 
-<script src="/content.js?v=2"></script>
+<script src="/content.js?v=3"></script>
 <script>
 /* ==========================================================
    НАСТРОЙКИ: тук променяш всичко. Не е нужно да пипаш друго.
@@ -294,7 +294,7 @@ const PROJECTS = (S.projects || []).map((p,i) => ({hue:(i*57+200)%360, imgs:[], 
 /* ---------- код ---------- */
 const $ = s => document.querySelector(s);
 const money = n => CFG.currency + n.toFixed(2).replace(/\.00$/, "");
-const art = (p,k=0) => p.imgs[k] ? `<img src="${p.imgs[k]}" alt="${p.title}, 3D печат${p.material ? " от " + p.material : ""}" loading="lazy">` : `<div class="ph" style="--h:${p.hue}" role="img" aria-label="${p.title}"></div>`;
+const art = (p,k=0) => (k===0 && p.thumb && !p._lb) ? `<img src="${p.thumb}" alt="${p.title}, 3D печат${p.material ? " от " + p.material : ""}" loading="lazy">` : p.imgs[k] ? `<img src="${p.imgs[k]}" alt="${p.title}, 3D печат${p.material ? " от " + p.material : ""}" loading="lazy">` : `<div class="ph" style="--h:${p.hue}" role="img" aria-label="${p.title}"></div>`;
 
 // галерия
 let tag = "Всички", cur = null;
@@ -308,7 +308,7 @@ $("#chips").onclick = e => { const b = e.target.closest("[data-t]"); if(b){ tag 
 $("#grid").onclick = e => {
   const b = e.target.closest("[data-i]"); if(!b) return;
   cur = PROJECTS[b.dataset.i];
-  show(cur,0); $("#lbT").textContent = cur.title; $("#lbX").textContent = cur.text || "";
+  show(cur, cur.video && !cur.imgs.length ? "v" : 0); $("#lbT").textContent = cur.title; $("#lbX").textContent = cur.text || "";
   $("#lbS").innerHTML = `${cur.material ? `<span>Материал: ${cur.material}</span>` : ""}${cur.hours ? `<span>Време: ${cur.hours} ч</span>` : ""}${cur.grams ? `<span>Тегло: ${cur.grams} г</span>` : ""}`;
   $("#lb").showModal();
 };
@@ -316,11 +316,11 @@ $("#grid").onclick = e => {
 function vid(p){
   const v = p.video || "", y = v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);
   if(y) return `<iframe src="https://www.youtube-nocookie.com/embed/${y[1]}" title="${p.title}" allowfullscreen loading="lazy"></iframe>`;
-  return v ? `<video src="${v}" controls playsinline preload="metadata"></video>` : "";
+  return v ? `<video src="${v}" controls playsinline preload="metadata"${p.thumb ? ` poster="${p.thumb}"` : ""}></video>` : "";
 }
 function show(p,k){
-  $("#lbArt").innerHTML = k === "v" ? vid(p) : art(p,k);
-  $("#lbTh").innerHTML = (p.imgs.length > 1 || (p.imgs.length && p.video)) || (!p.imgs.length && p.video)
+  $("#lbArt").innerHTML = k === "v" ? vid(p) : art({...p,_lb:1},k);
+  $("#lbTh").innerHTML = (p.imgs.length > 1 || (p.imgs.length && p.video))
     ? p.imgs.map((x,j) => `<button class="mini" data-k="${j}" aria-label="Снимка ${j+1}"><img src="${x}" alt=""></button>`).join("") + (p.video ? `<button class="mini" data-k="v">Видео</button>` : "") : "";
 }
 $("#lbTh").onclick = e => { const b = e.target.closest("[data-k]"); if(b) show(cur, b.dataset.k === "v" ? "v" : +b.dataset.k); };
