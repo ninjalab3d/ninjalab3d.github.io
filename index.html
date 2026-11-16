@@ -302,7 +302,7 @@ const tags = ["Всички", ...new Set(PROJECTS.map(p => p.tag))];
 function drawGallery(){
   $("#chips").innerHTML = tags.map(t => `<button class="chip" aria-pressed="${t===tag}" data-t="${t}">${t}</button>`).join("");
   $("#grid").innerHTML = PROJECTS.map((p,i) => ({p,i})).filter(x => tag==="Всички" || x.p.tag===tag).map(({p,i}) =>
-    `<article class="card"><button class="thumb" data-i="${i}" aria-label="Отвори: ${p.title}">${art(p)}</button><div class="meta"><h3>${p.title}</h3><p>${p.tag}, ${p.material}</p></div></article>`).join("");
+    `<article class="card"><button class="thumb" data-i="${i}" aria-label="Отвори: ${p.title}">${art(p)}</button><div class="meta"><h3>${p.title}</h3><p>${[p.tag, p.material].filter(Boolean).join(", ")}</p></div></article>`).join("");
 }
 $("#chips").onclick = e => { const b = e.target.closest("[data-t]"); if(b){ tag = b.dataset.t; drawGallery(); } };
 $("#grid").onclick = e => {
