@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Многоцветен 3D печат до 4 цвята – без боядисване</title>
+<meta name="description" content="Многоцветен 3D печат в до 4 цвята в един детайл: лога, фигурки, табелки и подаръци. Цветът е част от материала и не се лющи.">
+<link rel="canonical" href="https://ninjalab3d.github.io/mnogotsveten-3d-pechat">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#2747F5">
+<meta property="og:type" content="website"><meta property="og:locale" content="bg_BG">
+<meta property="og:title" content="Многоцветен 3D печат до 4 цвята – без боядисване">
+<meta property="og:description" content="Многоцветен 3D печат в до 4 цвята в един детайл: лога, фигурки, табелки и подаръци. Цветът е част от материала и не се лющи.">
+<meta property="og:url" content="https://ninjalab3d.github.io/mnogotsveten-3d-pechat"><meta property="og:image" content="https://ninjalab3d.github.io/images/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Начало","item":"https://ninjalab3d.github.io/"},{"@type":"ListItem","position":2,"name":"Многоцветен печат","item":"https://ninjalab3d.github.io/mnogotsveten-3d-pechat"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Колко цвята може да има един 3D отпечатан модел?","acceptedAnswer":{"@type":"Answer","text":"До 4 цвята в един детайл."}},{"@type":"Question","name":"Боядисан ли е детайлът?","acceptedAnswer":{"@type":"Answer","text":"Не. Цветът е част от материала и не се лющи като боя."}},{"@type":"Question","name":"Колко по-скъп е многоцветният печат?","acceptedAnswer":{"@type":"Answer","text":"Зависи от модела. Калкулаторът отчита броя цветове."}}]}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧱</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F1F3F4;--ink:#0E1A22;--mut:#55636d;--line:#D5DBDF;--card:#fff;--acc:#2747F5;--on:#fff;--hot:#FF7A2F;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0C1317;--ink:#E8EEF1;--mut:#93a1ab;--line:#25323a;--card:#131D23;--acc:#7D95FF;--on:#0C1317;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-weight:700;letter-spacing:-.01em;text-decoration:none}
+nav{display:flex;gap:18px}
+nav a{text-decoration:none;color:var(--mut);font-size:15px}
+nav a:hover{color:var(--ink)}
+.hero{padding:56px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:32px;align-items:center}
+h1{font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.04;letter-spacing:-.03em;margin:0 0 16px;font-weight:700}
+.lead{color:var(--mut);max-width:46ch;margin:0 0 24px;font-size:1.08rem}
+.btn{display:inline-block;border:0;border-radius:8px;background:var(--acc);color:var(--on);font:inherit;font-weight:500;padding:12px 20px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:hover{filter:brightness(1.08)}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+/* слоеве, които се „отпечатват“ веднъж при зареждане */
+.print{justify-self:center;width:min(100%,260px);aspect-ratio:3/4;animation:grow 2.6s steps(60,end) both}
+.vase{width:100%;height:100%;clip-path:polygon(36% 0,64% 0,61% 16%,80% 44%,72% 80%,65% 100%,35% 100%,28% 80%,20% 44%,39% 16%);
+background:repeating-linear-gradient(0deg,var(--acc) 0 5px,color-mix(in srgb,var(--acc) 70%,#000) 5px 7px),var(--acc);
+background-blend-mode:normal}
+.vase::after{content:"";display:block;height:100%;background:linear-gradient(90deg,rgba(0,0,0,.28),transparent 35%,rgba(255,255,255,.18) 60%,rgba(0,0,0,.3))}
+@keyframes grow{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
+section{padding:48px 0}
+h2{font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:-.02em;margin:0 0 6px}
+.sub{color:var(--mut);margin:0 0 24px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.thumb{display:block;width:100%;aspect-ratio:4/3;padding:0;border:0;cursor:zoom-in;background:none}
+.thumb img,.ph{width:100%;height:100%;object-fit:cover;display:block}
+.ph{background:repeating-linear-gradient(0deg,hsl(var(--h) 65% 52%) 0 5px,hsl(var(--h) 65% 44%) 5px 7px)}
+.meta{padding:12px 14px 14px}
+.meta h3{margin:0 0 2px;font-size:1.02rem}
+.meta p{margin:0;color:var(--mut);font-size:14px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:0;max-width:min(680px,94vw);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dl{aspect-ratio:16/10}
+.dl img,.dl .ph{width:100%;height:100%;object-fit:cover}
+.db{padding:18px 20px 20px}
+.db h3{margin:0 0 6px;font-size:1.3rem}
+.stats{display:flex;gap:18px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin:8px 0 16px}
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+label{display:block;font-size:14px;font-weight:500;margin:0 0 4px}
+.f{margin-bottom:14px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+textarea{min-height:110px;resize:vertical}
+.hint{font-size:13px;color:var(--mut);margin-top:4px}
+.price{font-size:clamp(2rem,6vw,2.8rem);font-weight:700;letter-spacing:-.03em;line-height:1.1;margin:4px 0}
+.bgn{color:var(--mut);margin:0 0 14px}
+.bd{list-style:none;padding:0;margin:0 0 16px;border-top:1px solid var(--line)}
+.bd li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.note{font-size:13px;color:var(--mut);margin:0 0 14px}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.links{display:grid;gap:10px;align-content:start}
+.links a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;background:var(--card)}
+.links a:hover{border-color:var(--acc)}
+.links small{display:block;color:var(--mut)}
+#st{margin-top:10px;font-size:15px;min-height:1.4em}
+.hp{position:absolute;left:-9999px}
+footer{padding:28px 0 40px;color:var(--mut);font-size:14px;border-top:1px solid var(--line)}
+.dl iframe,.dl video{width:100%;height:100%;border:0;background:#000}
+.ths{display:flex;gap:8px;padding:10px 20px 0;overflow-x:auto}.ths:empty{display:none}
+.mini{border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);padding:0;height:52px;min-width:70px;cursor:pointer;font:inherit}
+.mini img{height:100%;width:auto;display:block;border-radius:7px}
+#banner img{width:100%;max-height:340px;object-fit:cover;border-radius:12px;display:block}
+.logo img{height:30px;width:auto;display:block}
+.tags{list-style:none;display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0}
+.tags li{border:1px solid var(--line);border-radius:99px;padding:6px 14px;background:var(--card);font-size:15px}
+.fl{margin:0 0 10px}.fl a{margin-right:16px;color:var(--mut)}
+.txt{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.txt article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px}
+.txt h3,.rows h3{margin:0 0 6px;font-size:1.05rem}
+.txt p,.rows p{margin:0;color:var(--mut);font-size:15px;max-width:70ch}
+.rows{max-width:780px}.rows>div{padding:14px 0;border-top:1px solid var(--line)}
+ol.steps{padding-left:22px;max-width:62ch;margin:0}ol.steps li{margin-bottom:10px}
+details{border-top:1px solid var(--line);padding:12px 0;max-width:780px}
+summary{cursor:pointer;font-weight:500}details p{color:var(--mut);margin:8px 0 0;max-width:70ch}
+@media (max-width:760px){.nh{display:none}.hero .wrap,.calc,.contact{grid-template-columns:1fr}.print{width:150px;justify-self:start}nav{gap:12px}}
+@media (prefers-reduced-motion:reduce){.print{animation:none}html{scroll-behavior:auto}}
+.txt p a,.rows p a,.sub a,details p a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
+.txt p a{display:inline-block;margin-top:6px;font-weight:500}
+
+.crumbs{font-size:14px;color:var(--mut);padding:18px 0 0}.crumbs a{color:var(--mut)}
+.page h1{font-size:clamp(1.8rem,4.6vw,2.8rem);margin:10px 0 14px}
+.page section{padding:28px 0}.page .lead{max-width:62ch}
+.rel{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}.rel a{display:block;border:1px solid var(--line);border-radius:99px;padding:6px 14px;background:var(--card);text-decoration:none;font-size:15px}.rel a:hover{border-color:var(--acc)}
+.page p a,.page li a,.page .crumbs a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}.page .crumbs a{color:var(--mut)}.logo{white-space:nowrap}
+.page ul.pts{max-width:70ch;padding-left:20px;color:var(--mut)}.page ul.pts li{margin-bottom:6px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">3D Печат</a>
+<nav><a class="nh" href="/3d-pechat-varna">3D печат Варна</a><a class="nh" href="/ceni">Цена</a><a class="nh" href="/materiali">Материали</a><a href="/#zapitvane">Запитване</a></nav></div></header>
+<main class="page">
+<div class="wrap"><p class="crumbs"><a href="/">Начало</a> › Многоцветен печат</p>
+<h1>Многоцветен 3D печат до 4 цвята</h1>
+<p class="lead">Печат в до 4 цвята в един детайл: лога, фигурки, табелки и подаръци. Цветовете са част от самия материал, затова не се лющят като боя.</p>
+<div class="cta"><a class="btn" href="/#zapitvane">Изпрати запитване</a><a class="btn ghost" href="/#kalkulator">Изчисли цена</a></div></div>
+<section><div class="wrap"><h2>Кога е подходящ</h2><ul class="pts"><li>Лога и надписи на табелки.</li><li>Цветни фигурки и подаръци.</li><li>Детайли, които иначе се боядисват на ръка.</li></ul></div></section>
+<section><div class="wrap"><h2>Какво трябва да знаеш</h2><p>Многоцветният печат е малко по-скъп заради допълнителния материал и време. Калкулаторът на началната страница го отчита, като избереш брой цветове. <a href="/ceni">Цена на 3D печат</a>.</p></div></section>
+<section><div class="wrap"><h2>Как да подготвиш модела</h2><p>Най-добре е моделът да е разделен по цветове или цветовете да са зададени във файл 3MF. Ако не си сигурен, изпрати го и ще го проверя.</p></div></section>
+<section><div class="wrap"><h2>Често задавани въпроси</h2>
+<details><summary>Колко цвята може да има един 3D отпечатан модел?</summary><p>До 4 цвята в един детайл.</p></details>
+<details><summary>Боядисан ли е детайлът?</summary><p>Не. Цветът е част от материала и не се лющи като боя.</p></details>
+<details><summary>Колко по-скъп е многоцветният печат?</summary><p>Зависи от модела. Калкулаторът отчита броя цветове.</p></details>
+</div></section>
+<section><div class="wrap"><h2>Още по темата</h2><ul class="rel"><li><a href="/podaraci-klyuchodarzhateli">Ключодържатели и подаръци</a></li><li><a href="/tabelki-bukvi-logo">Табелки и лога</a></li><li><a href="/pechat-ot-stl-fail">Печат на STL файл</a></li></ul></div></section>
+</main>
+<footer><div class="wrap"><p class="fl"><a href="/">Начало</a><a href="/3d-pechat-varna">3D печат Варна</a><a href="/ceni">Цена на 3D печат</a><a href="/pechat-ot-stl-fail">Печат на STL файл</a><a href="/rezervni-chasti-3d-pechat">Резервни части</a><a href="/podaraci-klyuchodarzhateli">Ключодържатели и подаръци</a><a href="/tabelki-bukvi-logo">Обемни букви и табелки</a><a href="/mnogotsveten-3d-pechat">Многоцветен печат</a><a href="/materiali">Материали</a><a href="/prototipi">Прототипи</a><a href="/cosplay-3d-pechat">Cosplay</a></p>© 2026 3D Печат. 3D печат по поръчка във Варна: резервни части, прототипи, подаръци и cosplay.</div></footer>
+</body>
+</html>
