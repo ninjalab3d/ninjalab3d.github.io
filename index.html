@@ -64,7 +64,7 @@ h2{font-size:clamp(1.5rem,3.5vw,2.1rem);letter-spacing:-.02em;margin:0 0 6px}
 dialog{border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);padding:0;max-width:min(680px,94vw);width:100%}
 dialog::backdrop{background:rgba(0,0,0,.6)}
 .dl{aspect-ratio:16/10}
-.dl img,.dl .ph{width:100%;height:100%;object-fit:cover}
+.dl{background:#0b1114}.dl:has(img){aspect-ratio:auto}.dl img{width:100%;height:auto;max-height:68vh;object-fit:contain;display:block}.dl .ph{width:100%;height:100%;object-fit:cover}
 .db{padding:18px 20px 20px}
 .db h3{margin:0 0 6px;font-size:1.3rem}
 .stats{display:flex;gap:18px;flex-wrap:wrap;color:var(--mut);font-size:14px;margin:8px 0 16px}
