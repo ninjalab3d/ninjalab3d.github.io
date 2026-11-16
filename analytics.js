@@ -1,6 +1,6 @@
 /* Google Analytics се зарежда само след съгласие на посетителя */
 (function () {
-  var ID = "G-8ZKM5ZGQ27", K = "nl_consent";
+  var ID = "G-ZQ1VTCQR45", K = "nl_consent";
   function load() {
     if (window.__ga) return; window.__ga = 1;
     var s = document.createElement("script"); s.async = true;
