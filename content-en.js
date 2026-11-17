@@ -48,7 +48,7 @@ window.SITE = {
       "tag": "Functional",
       "text": "A small box for glasses, jewelry and small items, made to your design.",
       "imgs": [
-        "/p-ochila-1.jpg"
+        "/p-ochila-2.jpg"
       ]
     },
     {
