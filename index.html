@@ -357,7 +357,7 @@ function calc(){
   if(post) rows.push(["Довършване", post * q]);
   rows.push(["Подготовка", CFG.setup]);
   if(d) rows.push([`Отстъпка за количество (${Math.round(d*100)}%)`, -per * q * d]);
-  rows.push([`Работа и марж (${Math.round(CFG.margin*100)}%)`, total - base > 0 ? total - base : 0]);
+  rows.push(["Ръчна работа", total - base > 0 ? total - base : 0]);
   $("#bd").innerHTML = rows.map(x => `<li><span>${x[0]}</span><span>${x[1] < 0 ? "-" : ""}${money(Math.abs(x[1]))}</span></li>`).join("");
   est = `Ориентировъчна цена от калкулатора: ${money(lo)} - ${money(hi)}\nМатериал: ${$("#mat").value}, ${g} г, ${h} ч, цветове: ${c}, бройки: ${q}, довършване: ${$("#post").value}\n`;
 }
