@@ -357,7 +357,7 @@ function calc(){
   if(post) rows.push(["Finishing", post * q]);
   rows.push(["Preparation", CFG.setup]);
   if(d) rows.push([`Quantity discount (${Math.round(d*100)}%)`, -per * q * d]);
-  rows.push([`Labor and margin (${Math.round(CFG.margin*100)}%)`, total - base > 0 ? total - base : 0]);
+  rows.push(["Handwork", total - base > 0 ? total - base : 0]);
   $("#bd").innerHTML = rows.map(x => `<li><span>${x[0]}</span><span>${x[1] < 0 ? "-" : ""}${money(Math.abs(x[1]))}</span></li>`).join("");
   est = `Estimated price from the calculator: ${money(lo)} - ${money(hi)}\nMaterial: ${$("#mat").value}, ${g} g, ${h} h, colors: ${c}, quantity: ${q}, finishing: ${$("#post").value}\n`;
 }
