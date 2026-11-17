@@ -126,6 +126,11 @@ summary{cursor:pointer;font-weight:500}details p{color:var(--mut);margin:8px 0 0
 @keyframes barGrow{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
 @keyframes barSweep{to{left:110%}}
 @media (prefers-reduced-motion:reduce){.bar::before,.bar::after{animation:none}.rv{opacity:1;transform:none;transition:none}}
+/* мобилно: без хоризонтално движение */
+html,body{max-width:100%;overflow-x:clip}
+img,video,iframe,table{max-width:100%}
+.fl{display:flex;flex-wrap:wrap;gap:6px 16px}.fl a{margin-right:0}
+@media (max-width:760px){nav{flex-wrap:wrap;gap:6px 12px;justify-content:flex-end}header .wrap{gap:10px}}
 </style>
 </head>
 <body>

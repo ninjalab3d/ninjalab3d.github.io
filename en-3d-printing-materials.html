@@ -119,6 +119,11 @@ summary{cursor:pointer;font-weight:500}details p{color:var(--mut);margin:8px 0 0
 .rel{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:0;list-style:none}.rel a{display:block;border:1px solid var(--line);border-radius:99px;padding:6px 14px;background:var(--card);text-decoration:none;font-size:15px}.rel a:hover{border-color:var(--acc)}
 .page p a,.page li a,.page .crumbs a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}.page .crumbs a{color:var(--mut)}.logo{white-space:nowrap}
 .page ul.pts{max-width:70ch;padding-left:20px;color:var(--mut)}.page ul.pts li{margin-bottom:6px}
+/* мобилно: без хоризонтално движение */
+html,body{max-width:100%;overflow-x:clip}
+img,video,iframe,table{max-width:100%}
+.fl{display:flex;flex-wrap:wrap;gap:6px 16px}.fl a{margin-right:0}
+@media (max-width:760px){nav{flex-wrap:wrap;gap:6px 12px;justify-content:flex-end}header .wrap{gap:10px}}
 </style>
 </head>
 <body>
