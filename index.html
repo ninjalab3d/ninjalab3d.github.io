@@ -112,6 +112,20 @@ summary{cursor:pointer;font-weight:500}details p{color:var(--mut);margin:8px 0 0
 @media (prefers-reduced-motion:reduce){.print{animation:none}html{scroll-behavior:auto}}
 .txt p a,.rows p a,.sub a,details p a{color:var(--acc);text-decoration:underline;text-underline-offset:3px}
 .txt p a{display:inline-block;margin-top:6px;font-weight:500}
+/* мобилно: тънка лента „печат“ вместо голямата ваза + плавно появяване на секциите */
+.bar{display:none}
+@media (max-width:760px){
+.print{display:none}
+.hero{padding:34px 0 22px}
+.bar{display:block;height:10px;margin:22px 0 0;border-radius:5px;overflow:hidden;position:relative;background:var(--line)}
+.bar::before{content:"";position:absolute;inset:0;border-radius:5px;background:repeating-linear-gradient(90deg,var(--acc) 0 6px,color-mix(in srgb,var(--acc) 70%,#000) 6px 8px);animation:barGrow 2.4s cubic-bezier(.4,0,.2,1) both}
+.bar::after{content:"";position:absolute;top:0;bottom:0;width:38%;left:-40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:barSweep 2.8s 2.4s ease-in-out infinite}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+}
+@keyframes barGrow{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
+@keyframes barSweep{to{left:110%}}
+@media (prefers-reduced-motion:reduce){.bar::before,.bar::after{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -124,6 +138,7 @@ summary{cursor:pointer;font-weight:500}details p{color:var(--mut);margin:8px 0 0
 <h1>3D принтиране по поръчка</h1>
 <p class="lead">3D печат (3Д принтиране) на резервни части, прототипи, подаръци, ключодържатели, табелки и cosplay проекти от PLA, PETG и TPU. Печат по STL, 3MF или OBJ файл или по образец, включително многоцветен печат до 4 цвята. Доставка в цяла България.</p>
 <div class="cta"><a class="btn" href="#zapitvane">Изпрати запитване</a><a class="btn ghost" href="#kalkulator">Изчисли цена</a></div>
+<div class="bar" aria-hidden="true"></div>
 </div>
 <div class="print" aria-hidden="true"><div class="vase"></div></div>
 </div></div>
@@ -394,5 +409,12 @@ $("#yr").textContent = new Date().getFullYear();
 drawGallery();
 </script>
 <script src="/analytics.js" defer></script>
+<script>
+(function(){try{if(!window.IntersectionObserver||!matchMedia("(max-width:760px)").matches||matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+var els=[].slice.call(document.querySelectorAll("section"));els.forEach(function(e){e.classList.add("rv")});
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.06});
+els.forEach(function(e){io.observe(e)});
+setTimeout(function(){els.forEach(function(e){e.classList.add("in")})},4000)}catch(e){}})();
+</script>
 </body>
 </html>
