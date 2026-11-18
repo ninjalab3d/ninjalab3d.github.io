@@ -188,7 +188,8 @@ img,video,iframe,table{max-width:100%}
 <div class="f"><label for="q">Quantity</label><input id="q" type="number" min="1" step="1" value="1" inputmode="numeric"></div>
 </div>
 <div class="f"><label for="post">Finishing</label><select id="post"></select></div>
-<p class="hint">Don't know the weight or time? Leave the default values and send me the model, and I will work them out.</p>
+<div class="f"><label for="lnk">Link to the model (optional)</label><input id="lnk" type="url" inputmode="url" autocomplete="off" placeholder="Printables, Thingiverse, MakerWorld or a file in Google Drive"></div>
+<p class="hint">Don't know the weight or time? Paste a link to the model and I will quote an exact price after your inquiry.</p>
 </div>
 <div class="panel" aria-live="polite">
 <div class="hint">Approximate price</div>
@@ -379,9 +380,10 @@ function calc(){
   if(d) rows.push([`Quantity discount (${Math.round(d*100)}%)`, -per * q * d]);
   rows.push(["Handwork", total - base > 0 ? total - base : 0]);
   $("#bd").innerHTML = rows.map(x => `<li><span>${x[0]}</span><span>${x[1] < 0 ? "-" : ""}${money(Math.abs(x[1]))}</span></li>`).join("");
-  est = `Estimated price from the calculator: ${money(lo)} - ${money(hi)}\nMaterial: ${$("#mat").value}, ${g} g, ${h} h, colors: ${c}, quantity: ${q}, finishing: ${$("#post").value}\n`;
+  est = `Estimated price from the calculator: ${money(lo)} - ${money(hi)}\nMaterial: ${$("#mat").value}, ${g} g, ${h} h, colors: ${c}, quantity: ${q}, finishing: ${$("#post").value}\n${$("#lnk").value.trim() ? "Model link: " + $("#lnk").value.trim() + "\n" : ""}`;
 }
 ["mat","g","h","c","q","post"].forEach(id => $("#" + id).addEventListener("input", calc));
+$("#lnk").addEventListener("input", () => { $("#l").value = $("#lnk").value.trim(); calc(); });
 $("#useEst").onclick = () => fillMsg(est);
 calc();
 

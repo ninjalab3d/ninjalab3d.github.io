@@ -188,7 +188,8 @@ img,video,iframe,table{max-width:100%}
 <div class="f"><label for="q">Бройки</label><input id="q" type="number" min="1" step="1" value="1" inputmode="numeric"></div>
 </div>
 <div class="f"><label for="post">Довършване</label><select id="post"></select></div>
-<p class="hint">Не знаеш теглото или времето? Остави стойностите по подразбиране и ми изпрати модела, ще ги изчисля аз.</p>
+<div class="f"><label for="lnk">Линк към модела (по желание)</label><input id="lnk" type="url" inputmode="url" autocomplete="off" placeholder="Printables, Thingiverse, MakerWorld или файл в Google Drive"></div>
+<p class="hint">Не знаеш теглото или времето? Постави линк към модела и ще ти изчисля точна цена след запитване.</p>
 </div>
 <div class="panel" aria-live="polite">
 <div class="hint">Приблизителна цена</div>
@@ -379,9 +380,10 @@ function calc(){
   if(d) rows.push([`Отстъпка за количество (${Math.round(d*100)}%)`, -per * q * d]);
   rows.push(["Ръчна работа", total - base > 0 ? total - base : 0]);
   $("#bd").innerHTML = rows.map(x => `<li><span>${x[0]}</span><span>${x[1] < 0 ? "-" : ""}${money(Math.abs(x[1]))}</span></li>`).join("");
-  est = `Ориентировъчна цена от калкулатора: ${money(lo)} - ${money(hi)}\nМатериал: ${$("#mat").value}, ${g} г, ${h} ч, цветове: ${c}, бройки: ${q}, довършване: ${$("#post").value}\n`;
+  est = `Ориентировъчна цена от калкулатора: ${money(lo)} - ${money(hi)}\nМатериал: ${$("#mat").value}, ${g} г, ${h} ч, цветове: ${c}, бройки: ${q}, довършване: ${$("#post").value}\n${$("#lnk").value.trim() ? "Линк към модела: " + $("#lnk").value.trim() + "\n" : ""}`;
 }
 ["mat","g","h","c","q","post"].forEach(id => $("#" + id).addEventListener("input", calc));
+$("#lnk").addEventListener("input", () => { $("#l").value = $("#lnk").value.trim(); calc(); });
 $("#useEst").onclick = () => fillMsg(est);
 calc();
 
